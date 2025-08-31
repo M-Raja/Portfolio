@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Award, Users, Code } from 'lucide-react';
+import { Shield, Award, Users, Code, Cloud, Terminal, Boxes, GitBranch, Database, Braces, ShieldCheck } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -79,7 +79,7 @@ const About = () => {
               {/* Skill 2 */}
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <Code className="text-primary h-4 w-4" />
+                  <Cloud className="text-primary h-4 w-4" />
                   <span className="font-semibold text-black text-xs">CLOUD & COMPUTER NETWORKS</span>
                   <span className="font-semibold text-black text-xs ml-auto">70%</span>
                 </div>
@@ -88,7 +88,7 @@ const About = () => {
               {/* Skill 3 */}
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <Code className="text-primary h-4 w-4" />
+                  <Terminal className="text-primary h-4 w-4" />
                   <span className="font-semibold text-black text-xs">LINUX & BASH SCRIPTING</span>
                   <span className="font-semibold text-black text-xs ml-auto">75%</span>
                 </div>
@@ -97,7 +97,7 @@ const About = () => {
               {/* Skill 7 */}
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <Code className="text-primary h-4 w-4" />
+                  <Boxes className="text-primary h-4 w-4" />
                   <span className="font-semibold text-black text-xs">DOCKER & DEVOPS</span>
                   <span className="font-semibold text-black text-xs ml-auto">65%</span>
                 </div>
@@ -118,7 +118,7 @@ const About = () => {
               {/* Skill 4 */}
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <Code className="text-primary h-4 w-4" />
+                  <Braces className="text-primary h-4 w-4" />
                   <span className="font-semibold text-black text-xs">PYTHON & JAVA PROGRAMMING</span>
                   <span className="font-semibold text-black text-xs ml-auto">60%</span>
                 </div>
@@ -127,7 +127,7 @@ const About = () => {
               {/* Skill 5 */}
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <Code className="text-primary h-4 w-4" />
+                  <Database className="text-primary h-4 w-4" />
                   <span className="font-semibold text-black text-xs">MYSQL & MONGO DB</span>
                   <span className="font-semibold text-black text-xs ml-auto">70%</span>
                 </div>
@@ -136,7 +136,7 @@ const About = () => {
               {/* Skill 6 */}
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <Code className="text-primary h-4 w-4" />
+                  <GitBranch className="text-primary h-4 w-4" />
                   <span className="font-semibold text-black text-xs">GIT & OPENSOURCE TECHNOLOGIES</span>
                   <span className="font-semibold text-black text-xs ml-auto">50%</span>
                 </div>
@@ -154,7 +154,7 @@ const About = () => {
               {/* Skill 10 */}
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <Code className="text-primary h-4 w-4" />
+                  <ShieldCheck className="text-primary h-4 w-4" />
                   <span className="font-semibold text-black text-xs">API SECURITY</span>
                   <span className="font-semibold text-black text-xs ml-auto">55%</span>
                 </div>
