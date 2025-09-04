@@ -99,7 +99,7 @@ const Projects = () => {
                 <CardTitle className="text-lg font-bold text-foreground mb-2 mt-4">
                   {project.title}
                 </CardTitle>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-foreground mb-4">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4 mt-4">

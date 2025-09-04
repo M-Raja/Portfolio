@@ -30,8 +30,8 @@ const Experience = () => {
       duration: '2020 - 2023',
       achievements: [
         'An undergraduate program that deals with the subjects and topics related to computer science, computer application, and its services. The main aim of this program is to create quality professionals and research fellows who can work in every sector of the world by implementing the technology of computer systems and software.',
-        'Relevant Course work: Java , C , SQL , Advanced Java , Angular , Mongodb , Cloud Computing Operating Systems and Software Development.',
       ],
+      coursework: ['Java', 'C', 'SQL', 'Advanced Java', 'Angular', 'MongoDB', 'Cloud Computing', 'Operating Systems', 'Software Development'],
     },
     {
       degree: 'High School',
@@ -41,6 +41,7 @@ const Experience = () => {
       achievements: [
         'Completed my High School with Major in Computer Science , Maths , Physics and Chemistry..',
       ],
+      coursework: ['Computer Science', 'Mathematics', 'Physics', 'Chemistry'],
     },
   ];
 
@@ -100,12 +101,12 @@ const Experience = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-6">{exp.description}</p>
+                <p className="text-foreground mb-6">{exp.description}</p>
                 <div className="mb-6">
                   <h4 className="font-semibold text-foreground mb-3">Key Achievements:</h4>
                   <ul className="space-y-2">
                     {exp.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-start gap-2 text-muted-foreground">
+                      <li key={i} className="flex items-start gap-2 text-foreground">
                         <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                         <span>{achievement}</span>
                       </li>
@@ -159,13 +160,25 @@ const Experience = () => {
                   <h4 className="font-semibold text-foreground mb-3">Key Highlights:</h4>
                   <ul className="space-y-2">
                     {edu.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-start gap-2 text-muted-foreground">
+                      <li key={i} className="flex items-start gap-2 text-foreground">
                         <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                         <span>{achievement}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
+                {edu.coursework && (
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-3">Skills & Technologies:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {edu.coursework.map((course, i) => (
+                        <Badge key={i} className="bg-primary text-white border-primary transition-colors duration-200 hover:bg-white hover:text-primary hover:border-primary">
+                          {course}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </CardContent>
             </Card>
           ))}
