@@ -89,9 +89,11 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="slide-up flex flex-col sm:flex-row gap-4 lg:justify-start justify-center items-center" style={{ animationDelay: '1.5s' }}>
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground cyber-glow group">
-              <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-              Download Resume
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground cyber-glow group">
+              <a href="/M%20Raja%20_%20Cyber%20Security%20Engineer.pdf" download="M Raja _ Cyber Security Engineer.pdf">
+                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                Download Resume
+              </a>
             </Button>
             <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-cyber"
               onClick={() => {

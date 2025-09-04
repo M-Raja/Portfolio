@@ -10,13 +10,18 @@ import project3 from '@/assets/project-8.png';
 const Projects = () => {
   const projects = [
     {
-      title: 'Advanced Penetration Testing Framework',
-      description: 'Developed a comprehensive automated penetration testing framework that integrates multiple security tools and provides detailed vulnerability reports with remediation recommendations.',
+      title: 'WebShield Scanner – Web Security Testing Platform',
+      description: 'Built and deployed a web-based vulnerability scanner for comprehensive web application security assessment.',
       image: project1,
       status: 'Completed',
       category: 'Security Testing',
-      technologies: ['Python', 'Nmap', 'Metasploit', 'Burp Suite', 'Docker', 'FastAPI'],
+            technologies: ['Python', 'Node.js', 'FastAPI', 'OWASP ZAP', 'Nmap', 'GitHub Actions'],
+
       features: [
+        'OWASP Top 10 vulnerability testing',
+        'SSL/TLS certificate validation',
+        'HTTP security header analysis',
+        'Server fingerprinting capabilities',
         'Automated vulnerability scanning',
         'Custom exploit development',
         'Detailed reporting system',
@@ -27,12 +32,12 @@ const Projects = () => {
       icon: Shield,
     },
     {
-      title: 'Security Audit Dashboard',
+      title: 'Network Vulnerability Scanner & Assessment – Security Automation Project',
       description: 'Built a real-time security monitoring dashboard that aggregates data from multiple security tools and provides actionable insights for security teams.',
       image: project2,
       status: 'Ongoing',
       category: 'Security Monitoring',
-      technologies: ['React', 'Node.js', 'MongoDB', 'D3.js', 'WebSocket', 'Redis'],
+      technologies: ['Python', 'Nmap Integration', 'Port Scanning', 'Vulnerability Assessment', 'Reporting'],
       features: [
         'Real-time threat visualization',
         'Risk assessment metrics',

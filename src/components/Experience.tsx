@@ -49,12 +49,13 @@ const Experience = () => {
     // Add more education entries as needed
 
   const certifications = [
-    { name: 'CISSP', issuer: 'ISC2', year: '2023', status: 'Current', link: '#' },
-    { name: 'CEH', issuer: 'EC-Council', year: '2022', status: 'Current', link: '#' },
-    { name: 'GSEC', issuer: 'SANS', year: '2021', status: 'Current', link: '#' },
-    { name: 'CISM', issuer: 'ISACA', year: '2023', status: 'Current', link: '#' },
-    { name: 'Security+', issuer: 'CompTIA', year: '2019', status: 'Current', link: '#' },
-    { name: 'AWS Security', issuer: 'Amazon', year: '2022', status: 'Current', link: '#' },
+    { name: 'Ethical Hacking', issuer: 'GUVI', year: '2022', status: 'Current', link: 'https://www.guvi.in/certificate?id=00046yWD19u048hpV3' },
+    { name: 'Cyber Security & Ethical Hacking for Beginners', issuer: 'GUVI', year: '2022', status: 'Current', link: 'https://drive.google.com/file/d/1ZNssN2VlNv8wpzEPIWqDCT1OdEdIjI3E/view?usp=sharing' },
+    { name: 'Cyber Security & Ethical Hacking - Advanced', issuer: 'GUVI', year: '2022', status: 'Current', link: 'https://drive.google.com/file/d/1GIwq0obcwnJVvztgbdZnjwxCWUp1qDSV/view?usp=sharing' },
+    { name: 'Python Basics', issuer: 'Cybrary', year: '2025', status: 'Current', link: 'https://app.cybrary.it/profile/LinuxBoy?tab=cert-completion&cert=CC-1a87e648-9e31-45bf-a969-a3a4880d8d5a' },
+    { name: 'BASH Scripting Basics', issuer: 'Cybrary', year: '2025', status: 'Current', link: 'https://app.cybrary.it/profile/LinuxBoy?tab=cert-completion&cert=CC-f387b39a-1748-4d6d-a342-42ffa0179fd6' },
+    { name: 'Wireshark Basics', issuer: 'Cybrary', year: '2025', status: 'Current', link: 'https://app.cybrary.it/profile/LinuxBoy?tab=cert-completion&cert=CC-de4b6b04-51f7-4190-ac17-0812e822af3d' },
+    
   ];
 
   
