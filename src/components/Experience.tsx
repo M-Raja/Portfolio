@@ -187,21 +187,21 @@ const Experience = () => {
 
         {/* Certifications */}
         <div>
-          <h3 className="text-3xl font-bold text-foreground mb-8 text-center">
+          <h3 className="text-3xl font-bold text-foreground mb-6 text-center">
             Certifications & <span className="text-gradient-cyber">Credentials</span>
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
             {certifications.map((cert, index) => (
-              <Card key={index} className="bg-card border-border hover:border-primary/50 transition-cyber group">
-                <CardContent className="p-6 text-center">
-                  <div className="flex justify-center mb-4">
-                    <Award className="h-8 w-8 text-primary group-hover:scale-110 transition-cyber" />
+              <Card key={index} className="w-full sm:w-[300px] bg-white border border-border/60 rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)] transition-shadow">
+                <CardContent className="p-4 md:p-5 text-center">
+                  <div className="flex justify-center mb-3 md:mb-4">
+                    <Award className="h-6 w-6 md:h-7 md:w-7 text-primary" />
                   </div>
-                  <h4 className="font-bold text-foreground mb-2">{cert.name}</h4>
-                  <p className="text-sm text-muted-foreground mb-2">{cert.issuer}</p>
-                  <p className="text-xs text-muted-foreground">Earned: {cert.year}</p>
+                  <h4 className="text-sm md:text-base font-semibold text-foreground mb-1">{cert.name}</h4>
+                  <p className="text-xs md:text-sm text-muted-foreground mb-1">{cert.issuer}</p>
+                  <p className="text-[10px] md:text-xs text-muted-foreground">Earned: {cert.year}</p>
                   <div className="flex items-center justify-center gap-2 mt-2">
-                    <Badge variant="outline" className="border-primary text-primary">
+                    <Badge variant="outline" className="h-6 px-2 text-[10px] md:text-xs border-primary/60 text-primary">
                       {cert.status}
                     </Badge>
                     <a
@@ -211,7 +211,7 @@ const Experience = () => {
                       className="inline-flex items-center justify-center p-1 rounded hover:bg-primary/10 transition"
                       aria-label={`View ${cert.name} certificate`}
                     >
-                      <ExternalLink className="h-5 w-5 text-primary" />
+                      <ExternalLink className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                     </a>
                   </div>
                 </CardContent>

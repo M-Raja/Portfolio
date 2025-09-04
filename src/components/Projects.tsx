@@ -49,19 +49,19 @@ const Projects = () => {
       icon: Zap,
     },
     {
-      title: 'SecureAware – Cybersecurity Awareness & Phishing Simulation Platform',
+      title: ' Cybersecurity Awareness & Phishing Simulation Platform',
       description: 'Phishing simulation platform with real-time dashboards and automated workflows to test campaigns and measure employee susceptibility.',
       image: project2,
       status: 'Ongoing',
       category: 'Threat Intelligence',
-      technologies: ['Python', 'Node.js', 'FastAPI', 'OWASP ZAP', 'Nmap', 'GitHub Actions', 'GoPhish', 'HTML/CSS', 'SMTP/IMAP', 'SQLite'],
+      technologies: ['Python', 'Node.js', 'FastAPI', 'OWASP ZAP', 'Nmap', 'GoPhish', 'SMTP/IMAP', 'SQLite'],
       features: [
         'Multi-source threat feeds',
         'ML-powered threat detection',
         'IOC correlation engine',
         'Automated threat hunting',
       ],
-      github: 'https://github.com/mraja/threat-intel',
+      github: 'https://github.com/mraja/threat-intel',  
       demo: 'https://threatacademy.vercel.app/',
       icon: Search,
     },
@@ -92,49 +92,52 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="bg-card border-border group overflow-hidden hover:scale-105 hover:shadow-lg transition-transform duration-200 focus:outline-none focus:ring-0 active:outline-none">
-              <div className="relative overflow-hidden p-4 border border-border rounded-lg mb-4 bg-white">
-                <img 
-                  src={project.image} 
+            <Card
+              key={index}
+              className="relative overflow-hidden rounded-[24px] bg-white pb-5 shadow-[0_18px_50px_rgba(0,0,0,0.06)] transition-transform duration-300 hover:-translate-y-1"
+            >
+              {/* top image */}
+              <div className="relative h-40 w-full">
+                <img
+                  src={project.image}
                   alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-cyber rounded-md"
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-transparent" />
+                <div className="absolute top-3 right-3 text-right text-white text-xs leading-tight drop-shadow">
+                  <div className="font-semibold">{project.title}</div>
+                  <div className="font-semibold">{project.category}</div>
+                </div>
               </div>
-              <CardContent>
-                <CardTitle className="text-lg font-bold text-foreground mb-2 mt-4">
-                  {project.title}
-                </CardTitle>
-                <p className="text-sm text-foreground mb-4">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4 mt-4">
-                  {project.technologies.map((tech, i) => (
-                    <Badge
-                      key={i}
-                      className="px-3 py-1 text-xs bg-primary text-white border-primary transition-colors duration-200 hover:bg-white hover:text-primary hover:border-primary"
+
+              {/* middle dark panel */}
+              <div className="relative mx-3 -mt-6 mb-3 rounded-2xl bg-white text-foreground border border-border shadow-[0_6px_16px_rgba(0,0,0,0.05)]">
+                <CardContent className="px-5 pt-5 pb-6">
+                  <div className="mb-2">
+                    <div className="text-base font-semibold">{project.title}</div>
+                    <div className="text-sm text-muted-foreground">{project.description}</div>
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {project.technologies.map((tech, i) => (
+                      <Badge key={i} className="px-3 py-1 text-[10px] rounded-full border bg-blue-100 text-blue-700 border-blue-300 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="text-sm font-medium">{project.status}</span>
+                    <a
+                      href={project.demo || project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs underline text-primary hover:text-primary/80"
                     >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex items-center justify-between mt-4">
-                  {project.status === 'Completed' ? (
-                    <span className="bg-green-100 text-green-700 px-4 py-1 rounded-md font-medium text-sm">Completed</span>
-                  ) : project.status === 'Ongoing' ? (
-                    <span className="bg-yellow-100 text-yellow-700 px-4 py-1 rounded-md font-medium text-sm">Ongoing</span>
-                  ) : (
-                    <span className="bg-gray-100 text-gray-700 px-4 py-1 rounded-md font-medium text-sm">{project.status}</span>
-                  )}
-                  <a
-                    href={project.demo || project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary font-medium flex items-center gap-1 hover:underline"
-                  >
-                    View <ExternalLink className="h-4 w-4" />
-                  </a>
-                </div>
-              </CardContent>
+                      View <ExternalLink className="inline h-3.5 w-3.5" />
+                    </a>
+                  </div>
+                </CardContent>
+              </div>
+              
             </Card>
           ))}
         </div>
