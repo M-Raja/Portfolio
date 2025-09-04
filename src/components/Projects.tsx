@@ -28,7 +28,7 @@ const Projects = () => {
         'Integration with CI/CD pipelines',
       ],
       github: 'https://github.com/mraja/pentest-framework',
-      demo: 'https://pentest-demo.mraja.dev',
+      demo: 'https://defender-core-eta.vercel.app/',
       icon: Shield,
     },
     {
@@ -44,8 +44,8 @@ const Projects = () => {
         'Automated alert system',
         'Compliance reporting',
       ],
-      github: 'https://github.com/mraja/security-dashboard',
-      demo: 'https://security-dashboard.mraja.dev',
+      github: 'https://github.com/M-Raja/cybersec-network-scanner',
+      demo: 'https://github.com/M-Raja/cybersec-network-scanner',
       icon: Zap,
     },
     {
@@ -62,7 +62,7 @@ const Projects = () => {
         'Automated threat hunting',
       ],
       github: 'https://github.com/mraja/threat-intel',
-      demo: 'https://threat-intel.mraja.dev',
+      demo: 'https://threatacademy.vercel.app/',
       icon: Search,
     },
   ];
