@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Download, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import heroBg from '@/assets/hero-bg.jpg';
-import secureLoginImg from '@/assets/pro.png';
+import secureLoginImg from '@/assets/Pro.png';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
