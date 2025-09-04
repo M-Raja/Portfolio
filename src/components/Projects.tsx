@@ -13,7 +13,7 @@ const Projects = () => {
       title: 'WebShield Scanner – Web Security Testing Platform',
       description: 'Built and deployed a web-based vulnerability scanner for comprehensive web application security assessment.',
       image: project1,
-      status: 'Completed',
+      status: 'Ongoing',
       category: 'Security Testing',
             technologies: ['Python', 'Node.js', 'FastAPI', 'OWASP ZAP', 'Nmap', 'GitHub Actions'],
 
@@ -32,10 +32,10 @@ const Projects = () => {
       icon: Shield,
     },
     {
-      title: 'Network Vulnerability Scanner & Assessment – Security Automation Project',
-      description: 'Built a real-time security monitoring dashboard that aggregates data from multiple security tools and provides actionable insights for security teams.',
-      image: project2,
-      status: 'Ongoing',
+      title: 'Network Vulnerability Scanner & Assessment – Security Automation ',
+      description: 'Built a Python-based network vulnerability scanner with automated discovery, Nmap-powered enumeration, custom misconfiguration checks, and reporting.',
+      image: project3,
+      status: 'Completed',
       category: 'Security Monitoring',
       technologies: ['Python', 'Nmap Integration', 'Port Scanning', 'Vulnerability Assessment', 'Reporting'],
       features: [
@@ -49,12 +49,12 @@ const Projects = () => {
       icon: Zap,
     },
     {
-      title: 'Threat Intelligence Platform',
-      description: 'Created a threat intelligence platform that collects, analyzes, and correlates threat data from multiple sources to provide early warning capabilities.',
-      image: project3,
-      status: 'Completed',
+      title: 'SecureAware – Cybersecurity Awareness & Phishing Simulation Platform',
+      description: 'Phishing simulation platform with real-time dashboards and automated workflows to test campaigns and measure employee susceptibility.',
+      image: project2,
+      status: 'Ongoing',
       category: 'Threat Intelligence',
-      technologies: ['Python', 'Elasticsearch', 'Kibana', 'TensorFlow', 'Apache Kafka', 'PostgreSQL'],
+      technologies: ['Python', 'Node.js', 'FastAPI', 'OWASP ZAP', 'Nmap', 'GitHub Actions', 'GoPhish', 'HTML/CSS', 'SMTP/IMAP', 'SQLite'],
       features: [
         'Multi-source threat feeds',
         'ML-powered threat detection',
