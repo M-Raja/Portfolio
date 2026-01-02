@@ -1,4 +1,3 @@
-import React from 'react';
 import { Shield, Cloud, Code } from 'lucide-react';
 
 const About = () => {
@@ -16,17 +15,18 @@ const About = () => {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Profile Image Section */}
-          <div className="flex justify-center lg:justify-end items-start order-1 lg:order-2">
-            <div className="relative w-full max-w-md">
-              <div className="absolute inset-0 bg-primary opacity-10 rounded-lg transform rotate-3"></div>
-              <img
-                src="/profile-image.jpg"
-                alt="M Raja"
-                className="relative w-full h-auto rounded-lg shadow-xl object-cover"
-                onError={(e) => {
-                  e.currentTarget.src = '/placeholder.svg';
-                }}
-              />
+          <div className="flex justify-center items-center order-1 lg:order-2 mt-8 lg:mt-12">
+            <div className="relative w-auto mx-auto">
+              <div className="p-3 bg-white rounded-2xl border border-gray-200/50 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-primary/30 hover:scale-105 cursor-pointer">
+                <img
+                  src="/main.png"
+                  alt="M Raja"
+                  className="w-[240px] h-auto max-h-[280px] rounded-xl object-contain transition-transform duration-300"
+                  onError={(e) => {
+                    e.currentTarget.src = '/placeholder.svg';
+                  }}
+                />
+              </div>
             </div>
           </div>
 
