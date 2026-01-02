@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, Mail, Github, Linkedin, InstagramIcon, Code, BookOpen } from 'lucide-react';
+import { Download, Mail, Github, Linkedin, InstagramIcon, Code } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import heroBg from '@/assets/hero-bg.jpg';
 
@@ -68,10 +68,6 @@ const Hero = () => {
             <a href="https://www.instagram.com/___raja.m__/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
               className="rounded-full bg-white p-3 shadow-md hover:scale-110 hover:shadow-lg transition-transform">
               <InstagramIcon className="h-5 w-5 text-pink-500" />
-            </a>
-            <a href="https://cyberblogz.hashnode.dev/" target="_blank" rel="noopener noreferrer" aria-label="Hashnode"
-              className="rounded-full bg-white p-3 shadow-md hover:scale-110 hover:shadow-lg transition-transform">
-              <BookOpen className="h-5 w-5 text-[#2962FF]" />
             </a>
           </div>
         </div>
