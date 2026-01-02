@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button';
 const navItems = [
   { id: 'hero', label: 'Home' },
   { id: 'about', label: 'About' },
-  { id: 'professional-experience', label: 'Experience' },
-  { id: 'get-in-touch', label: 'Contact' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'contact', label: 'Contact' },
 ];
 
 const Navigation = () => {
@@ -14,10 +14,12 @@ const Navigation = () => {
   const [activeSection, setActiveSection] = useState('hero');
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
+    // For About section, scroll to the heading instead of the section
+    const targetId = sectionId === 'about' ? 'about-heading' : sectionId;
+    const element = document.getElementById(targetId);
     if (element) {
       setActiveSection(sectionId); // Set active state immediately
-      const offset = 80; // Account for fixed navbar
+      const offset = 64; // Account for fixed navbar (h-16 = 64px)
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - offset;
       window.scrollTo({
@@ -30,16 +32,27 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map(item => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 120; // Account for navbar height
+      const scrollPosition = window.scrollY + 100; // Account for navbar height
+      const sections = navItems.map(item => {
+        const element = document.getElementById(item.id);
+        return element ? {
+          id: item.id,
+          top: element.offsetTop,
+          bottom: element.offsetTop + element.offsetHeight
+        } : null;
+      }).filter(Boolean) as Array<{ id: string; top: number; bottom: number }>;
 
+      // Find the current section based on scroll position
+      let currentSection = navItems[0].id; // Default to first section
+      
       for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navItems[i].id);
+        if (scrollPosition >= sections[i].top - 100) {
+          currentSection = sections[i].id;
           break;
         }
       }
+
+      setActiveSection(currentSection);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -109,10 +122,7 @@ const Navigation = () => {
                 size="sm"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground transition-cyber"
                 onClick={() => {
-                  const projectsSection = document.getElementById('projects');
-                  if (projectsSection) {
-                    projectsSection.scrollIntoView({ behavior: 'smooth' });
-                  }
+                  scrollToSection('projects');
                 }}
               >
                 <FolderKanban className="mr-2 h-4 w-4" />
@@ -172,11 +182,7 @@ const Navigation = () => {
                   size="sm"
                   className="bg-primary hover:bg-primary/90 text-primary-foreground transition-cyber"
                   onClick={() => {
-                    const projectsSection = document.getElementById('projects');
-                    if (projectsSection) {
-                      projectsSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                    setIsOpen(false);
+                    scrollToSection('projects');
                   }}
                 >
                   <FolderKanban className="mr-2 h-4 w-4" />
