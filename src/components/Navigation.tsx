@@ -193,7 +193,7 @@ const Navigation = () => {
                   className="bg-primary hover:bg-primary/90 text-primary-foreground transition-cyber"
                   asChild
                 >
-                  <a href="https://medium.com/@raja-m" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cyberblogz.hashnode.dev/" target="_blank" rel="noopener noreferrer">
                     <BookOpen className="mr-2 h-4 w-4" />
                     Blogs
                   </a>

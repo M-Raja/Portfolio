@@ -42,7 +42,7 @@ const Contact = () => {
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-6">Let's Connect</h3>
               <p className="text-muted-foreground mb-8">
-                Whether you want to discuss a project, explore collaboration opportunities, or simply connect with a fellow security professional, I'd love to hear from you.<br />
+                Whether you want to discuss a project, explore collaboration opportunities, or simply connect with a fellow security professional, I'd love to hear from you.<br/><br/>
                 Let's build something secure together!
               </p>
             </div>

@@ -35,21 +35,21 @@ const About = () => {
             {/* Introduction */}
             <div className="space-y-6">
               <div>
-                <p className="text-lg text-black leading-relaxed mb-4">
+                <p className="text-base text-black leading-relaxed mb-4">
                   I'm <span className="text-primary font-medium">Raja</span>, a cybersecurity professional specializing in SecOps and <span className="text-primary font-medium">security operations engineering</span>, with expertise in <span className="text-primary font-medium">cloud security</span> and automation-driven security practices.
                 </p>
               </div>
 
               {/* Current Role & Experience */}
               <div>
-                <p className="text-lg text-black leading-relaxed mb-4">
+                <p className="text-base text-black leading-relaxed mb-4">
                   Currently an Associate Technical Engineer at <span className="font-medium text-primary">Kyndryl</span>, I work on automation, system reliability, and incident handling. This foundation in production systems naturally led me to <span className="text-primary font-medium">security operations engineering</span>, where I focus on improving security posture, hardening systems, and implementing security controls across infrastructure and cloud environments.
                 </p>
               </div>
 
               {/* Career Goals */}
               <div>
-                <p className="text-lg text-black leading-relaxed">
+                <p className="text-base text-black leading-relaxed">
                   I'm actively seeking opportunities in <span className="text-primary font-medium">junior SecOps</span>, <span className="text-primary font-medium">security operations engineering</span>, or <span className="text-primary font-medium">cloud security</span> analysis. Let's connect!
                 </p>
               </div>
