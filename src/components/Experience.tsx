@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Calendar, MapPin, Award, ExternalLink, Heart, ChevronDown, Cloud, Terminal, Boxes, GitBranch, Database, Braces, ShieldCheck, Shield, Users } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Calendar, MapPin, Award, ExternalLink, Heart, ChevronDown, Cloud, Terminal, Boxes, GitBranch, Database, Braces, ShieldCheck, Shield, Users, Activity, AlertTriangle, Code, Search, Server, Zap } from 'lucide-react';
 
 const Experience = () => {
   const [expandedExperiences, setExpandedExperiences] = useState<{ [key: number]: boolean }>({});
@@ -119,6 +119,24 @@ const Experience = () => {
     logo: (cert as any).logo || providerLogos[cert.issuer] || null
   }));
 
+  // Initialize all sections as expanded by default
+  useEffect(() => {
+    // Expand all experience sections
+    const initialExperiences: { [key: number]: boolean } = {};
+    experiences.forEach((_, index) => {
+      initialExperiences[index] = true;
+    });
+    setExpandedExperiences(initialExperiences);
+
+    // Expand all volunteering sections
+    const initialVolunteering: { [key: number]: boolean } = {};
+    volunteering.forEach((_, index) => {
+      initialVolunteering[index] = true;
+    });
+    setExpandedVolunteering(initialVolunteering);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   
 
 
@@ -126,53 +144,86 @@ const Experience = () => {
     <section id="experience" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Skills Section */}
-        <div className="mb-24">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-black mb-4">
-              Skills
+        <div className="mb-16 sm:mb-20 lg:mb-24">
+          <div className="text-center mb-10 sm:mb-12 lg:mb-16 px-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-4">
+              Technical <span className="text-gradient-cyber">Skills</span>
             </h2>
             <div className="w-24 h-0.5 bg-primary mx-auto"></div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex items-center gap-3">
-              <Shield className="h-5 w-5 text-primary flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">Web & Android Pentesting</span>
+          
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:flex lg:flex-wrap justify-center gap-2 sm:gap-2.5 px-4 sm:px-6 lg:px-0 max-w-6xl mx-auto">
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <Activity className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">SIEM Monitoring</span>
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex items-center gap-3">
-              <Cloud className="h-5 w-5 text-primary flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">Cloud & Networks</span>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <ShieldCheck className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Incident Management</span>
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex items-center gap-3">
-              <Terminal className="h-5 w-5 text-primary flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">Linux & Bash</span>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <AlertTriangle className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Alert Triage</span>
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex items-center gap-3">
-              <Boxes className="h-5 w-5 text-primary flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">Docker & DevOps</span>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <Shield className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">SOC</span>
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex items-center gap-3">
-              <Award className="h-5 w-5 text-primary flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">Security Auditing</span>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <Shield className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">EDR & Defender</span>
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex items-center gap-3">
-              <Braces className="h-5 w-5 text-primary flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">Python & Java</span>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <Users className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Network Security</span>
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex items-center gap-3">
-              <Database className="h-5 w-5 text-primary flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">MySQL & MongoDB</span>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <AlertTriangle className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">MITRE ATT&CK</span>
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex items-center gap-3">
-              <GitBranch className="h-5 w-5 text-primary flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">Git & Open Source</span>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <Award className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">OWASP Top 10</span>
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex items-center gap-3">
-              <Users className="h-5 w-5 text-primary flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">Networking Protocols</span>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <Shield className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Threat Analysis</span>
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex items-center gap-3">
-              <ShieldCheck className="h-5 w-5 text-primary flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">API Security</span>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <Cloud className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">AWS Security</span>
+            </div>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <Code className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Python</span>
+            </div>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <Terminal className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Bash & PowerShell</span>
+            </div>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <Zap className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Automation</span>
+            </div>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <Search className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Vulnerability Assessment</span>
+            </div>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <AlertTriangle className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">CVE Analysis</span>
+            </div>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <Server className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Linux & Windows</span>
+            </div>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <Boxes className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">ServiceNow & BMC</span>
+            </div>
+            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
+              <Award className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">NIST CSF & ISO 27001</span>
             </div>
           </div>
         </div>

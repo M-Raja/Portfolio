@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import heroBg from '@/assets/hero-bg.jpg';
 
 const Hero = () => {
-  const fullText = "Cybersecurity Engineer | Ethical Hacker";
+  const fullText = "Cybersecurity | Security Analyst";
   const nameFull = "Raja M";
 
   return (
