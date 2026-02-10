@@ -13,16 +13,21 @@ const About = () => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-8 items-start">
           {/* Profile Image Section */}
-          <div className="flex justify-center lg:justify-end items-start order-1 lg:order-2">
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
-              <div className="absolute inset-0 bg-primary opacity-10 rounded-full transform rotate-3"></div>
-              <img
-                src="/87035496.png"
-                alt="M Raja"
-                className="relative w-full h-full rounded-full shadow-xl object-cover object-[42%_50%]"
-              />
+          <div className="flex justify-center lg:justify-end items-start order-1 lg:order-2 pt-8 lg:pt-12 -translate-x-4 lg:-translate-x-6">
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 group cursor-default">
+              {/* Decorative background */}
+              <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full transform rotate-3 blur-sm group-hover:rotate-6 group-hover:scale-105 transition-all duration-300"></div>
+              <div className="absolute inset-0 bg-primary/10 rounded-full transform rotate-3 group-hover:bg-primary/15 transition-colors duration-300"></div>
+              {/* Image container with ring and enhancement */}
+              <div className="relative w-full h-full rounded-full p-1.5 bg-gradient-to-br from-white/90 to-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.05)] overflow-hidden ring-2 ring-white/80 transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_12px_40px_rgba(0,0,0,0.18),0_0_0_1px_rgba(0,0,0,0.08)] group-hover:ring-primary/30">
+                <img
+                  src="/87035496.png"
+                  alt="M Raja"
+                  className="w-full h-full rounded-full object-cover object-[42%_50%] brightness-105 contrast-105 saturate-110 shadow-inner"
+                />
+              </div>
             </div>
           </div>
 
