@@ -16,15 +16,12 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Profile Image Section */}
           <div className="flex justify-center lg:justify-end items-start order-1 lg:order-2">
-            <div className="relative w-full max-w-md">
-              <div className="absolute inset-0 bg-primary opacity-10 rounded-lg transform rotate-3"></div>
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
+              <div className="absolute inset-0 bg-primary opacity-10 rounded-full transform rotate-3"></div>
               <img
-                src="/profile-image.jpg"
+                src="/87035496.png"
                 alt="M Raja"
-                className="relative w-full h-auto rounded-lg shadow-xl object-cover"
-                onError={(e) => {
-                  e.currentTarget.src = '/placeholder.svg';
-                }}
+                className="relative w-full h-full rounded-full shadow-xl object-cover object-[42%_50%]"
               />
             </div>
           </div>

@@ -1,30 +1,25 @@
 import React from 'react';
-import { Globe, Github } from 'lucide-react';
+import { Github } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import project1 from '@/assets/project-3.png';
 import project2 from '@/assets/project-4.png';
-import project3 from '@/assets/project-8.png';
 
 const Projects = () => {
   const projects = [
     {
-      title: 'Defender Core',
-      description: 'Comprehensive penetration testing framework with automated vulnerability scanning, exploit detection, and security assessment capabilities.',
+      title: 'Security Operations Incident Detection and Investigation',
+      description: 'Analyzed Windows logs to detect suspicious login patterns and bruteforce attempts using SIEM. Built investigation timelines and documented incident response workflows.',
       image: project1,
-      tag: 'Penetration Testing',
-      tagColor: 'bg-red-100 text-red-700 border-red-300',
-      github: 'https://github.com/mraja/pentest-framework',
-      demo: 'https://defender-core-eta.vercel.app/',
+      tag: 'Security Operations',
+      tagColor: 'bg-blue-100 text-blue-700 border-blue-300',
     },
     {
-      title: 'Threat Intelligence Platform',
-      description: 'Advanced threat intelligence and analysis platform for tracking security threats, malware analysis, and real-time threat detection.',
+      title: 'Cloud Security Misconfiguration Detection and Response',
+      description: 'Identified AWS misconfigurations including public storage and over-permissive IAM policies. Used CloudTrail and CloudWatch to analyze risks and recommend fixes.',
       image: project2,
-      tag: 'Threat Intelligence',
-      tagColor: 'bg-blue-100 text-blue-700 border-blue-300',
-      github: 'https://github.com/mraja/threat-intel',
-      demo: 'https://threatacademy.vercel.app/',
+      tag: 'Cloud Security',
+      tagColor: 'bg-green-100 text-green-700 border-green-300',
     },
   ];
 
@@ -56,43 +51,25 @@ const Projects = () => {
               {/* Project Content */}
               <div className="p-6">
                 {/* Project Title */}
-                <h3 className="text-xl font-bold text-black mb-2">{project.title}</h3>
+                <h3 className="text-xl font-bold text-black mb-4">{project.title}</h3>
                 
                 {/* Project Description */}
                 <p className="text-sm text-gray-600 mb-4 leading-relaxed">{project.description}</p>
                 
-                {/* Tag */}
-                <div className="mb-6">
-                  <Badge className={`px-3 py-1 text-xs font-medium rounded ${project.tagColor}`}>
+                {/* Tag and GitHub Button */}
+                <div className="flex items-center justify-between gap-3 mb-6">
+                  <Badge className={`px-3 py-1 text-xs font-medium rounded ${project.tagColor} ${project.tag === 'Security Operations' ? 'hover:bg-blue-100 hover:text-blue-700 hover:border-blue-300' : 'hover:bg-green-100 hover:text-green-700 hover:border-green-300'}`}>
                     {project.tag}
                   </Badge>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex items-center gap-3">
-                  {project.demo && (
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="flex-1 border-gray-300 bg-white text-black hover:bg-gray-50"
-                    >
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                        <Globe className="mr-2 h-4 w-4" />
-                        Live Demo
-                      </a>
-                    </Button>
-                  )}
-                  {project.github && (
-                    <Button
-                      asChild
-                      className="flex-1 bg-black text-white hover:bg-gray-800"
-                    >
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="mr-2 h-4 w-4" />
-                        GitHub
-                      </a>
-                    </Button>
-                  )}
+                  <Button
+                    asChild
+                    className="bg-black text-white hover:bg-gray-800"
+                  >
+                    <a href="https://github.com/M-Raja?tab=repositories" target="_blank" rel="noopener noreferrer">
+                      <Github className="mr-2 h-4 w-4" />
+                      GitHub
+                    </a>
+                  </Button>
                 </div>
               </div>
             </div>

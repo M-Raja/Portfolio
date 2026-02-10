@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, MapPin, Award, ExternalLink, Heart, ChevronDown, Cloud, Terminal, Boxes, GitBranch, Database, Braces, ShieldCheck, Shield, Users, Activity, AlertTriangle, Code, Search, Server, Zap } from 'lucide-react';
+import { Calendar, MapPin, Award, ExternalLink, Heart, ChevronDown, Cloud, Terminal, Boxes, ShieldCheck, Shield, Users, Activity, AlertTriangle, Code, Search, Server, Zap } from 'lucide-react';
 
 const Experience = () => {
   const [expandedExperiences, setExpandedExperiences] = useState<{ [key: number]: boolean }>({});

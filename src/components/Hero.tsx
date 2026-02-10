@@ -5,7 +5,6 @@ import heroBg from '@/assets/hero-bg.jpg';
 
 const Hero = () => {
   const fullText = "Cybersecurity | Security Analyst";
-  const nameFull = "Raja M";
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -44,7 +43,7 @@ const Hero = () => {
           {/* CTA Button - Above Icons */}
           <div className="fade-in flex justify-center items-center mb-16" style={{ animationDelay: '0.7s' }}>
             <Button asChild size="lg" className="flex-wrap bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-semibold text-base uppercase tracking-wide shadow-lg hover:shadow-xl transition-all">
-              <a href="/M%20Raja%20_%20Cyber%20Security%20Engineer.pdf" download="M Raja _ Cyber Security Engineer.pdf">
+              <a href="/M.%20Raja-%20Security%20Analyst.pdf" download="M. Raja- Security Analyst.pdf">
                 <Download className="mr-2 h-5 w-5" />
                 Hire me
               </a>
