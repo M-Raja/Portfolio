@@ -1,549 +1,283 @@
-import React, { useState, useEffect } from 'react';
-import { Calendar, MapPin, Award, ExternalLink, Heart, ChevronDown, Cloud, Terminal, Boxes, ShieldCheck, Shield, Users, Activity, AlertTriangle, Code, Search, Server, Zap } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Calendar, MapPin, ChevronDown, Briefcase, GraduationCap, Heart, type LucideIcon } from 'lucide-react';
 
-const Experience = () => {
-  const [expandedExperiences, setExpandedExperiences] = useState<{ [key: number]: boolean }>({});
-  const [expandedVolunteering, setExpandedVolunteering] = useState<{ [key: number]: boolean }>({});
-  const [failedLogos, setFailedLogos] = useState<{ [key: number]: boolean }>({});
+const workExperience = [
+  {
+    title: 'Associate Technical Engineer',
+    company: 'Kyndryl India · Full-time',
+    logo: '/kyndryl-badge.png',
+    logoFit: 'cover' as const,
+    location: 'Chennai, Tamil Nadu, IND · On-site',
+    duration: 'Aug 2023 – Jun 2025',
+    team: 'Infrastructure Operations (Mainframe & Cloud Services)',
+    achievements: [
+      'Monitored and triaged alerts in a 24×7 NOC/SOC environment, managing 100+ monthly incidents via ServiceNow & BMC Remedy with 100% SLA compliance (ITIL).',
+      'Performed Root Cause Analysis (RCA) on operational and security alerts, cutting recurring incidents by 20% through preventive fixes.',
+      'Automated monitoring and batch workflows using Bash, Control-M, and IBM Tivoli OPC, reducing manual effort by 30%.',
+      'Supported IBM Mainframe and cloud production systems, including DR and failover testing, to ensure uptime, compliance, and audit readiness.',
+      'Collaborated cross-functionally on enterprise projects for APMM and Naturgy, covering data center migrations and service reliability.',
+    ],
+  },
+];
 
-  const toggleExperience = (index: number) => {
-    setExpandedExperiences(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
-  };
+const education = [
+  {
+    title: 'BCA · Computer Programming, Specific Applications',
+    company: 'SRM Institute of Science and Technology',
+    logo: '/srm-logo.png',
+    logoZoom: true,
+    location: 'Chennai, IND',
+    duration: '2020 – 2023',
+    achievements: [
+      'Proficient in Python, Web Technologies, and Database Management Systems (DBMS).',
+      'Strong understanding of Cybersecurity, Computer Networks, Cloud Computing, and Artificial Intelligence (AI).',
+      'Passionate about problem-solving and applying technology to build secure, real-world solutions.',
+    ],
+  },
+  {
+    title: 'High School',
+    company: 'Santhome HSS, Chennai',
+    logo: '/santhome-logo.png',
+    logoZoom: true,
+    location: 'Chennai, IND',
+    duration: '2018 – 2020',
+    achievements: [
+      'Completed High School with a major in Computer Science, Maths, Physics, and Chemistry.',
+    ],
+  },
+];
 
-  const toggleVolunteering = (index: number) => {
-    setExpandedVolunteering(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
-  };
+const volunteering = [
+  {
+    title: 'Campus Ambassador',
+    company: 'TechLearn.live',
+    logo: '/techlearn-logo.png',
+    logoFit: 'cover' as const,
+    location: 'Remote',
+    duration: 'Jul 2021 – Sep 2021',
+    team: 'Community Engagement (Social Media & Creative Design)',
+    achievements: [
+      'Supported social media management and community outreach initiatives to promote educational programs and events.',
+      'Designed posters, promotional materials, and digital content using Canva to increase engagement and brand visibility.',
+      'Collaborated with the team to create communication campaigns and support community engagement activities.',
+      'Strengthened skills in social media marketing, visual design, communication, teamwork, and event promotion.',
+    ],
+  },
+];
 
-  const experiences = [
-    {
-      title: 'Associate Technical Engineer',
-      company: 'Kyndryl India',
-      logo: '/kyndryl-logo.png',
-      location: 'Chennai,IND',
-      duration: '2023 - 2025',
-      achievements: [
-        'Managing Linux, Cloud, and Network-based tasks to ensure system security.',
-        'Performing vulnerability assessments and implementing security controls to mitigate risks.',
-        'Collaborating with teams to optimize and ensure secure batch processing workflows.',
-        'Assisting in threat analysis and security hardening to enhance system resilience.',
-        'Actively troubleshoots and resolves batch processing issues, collaborating with cross-functional teams for enhanced operational efficiency.',
-      ],
-    },
-  ];
-  const education = [
-    {
-      degree: 'Bachelor of Computer Application',
-      institution: 'SRM Institute of Science and Technology',
-      logo: '/srm-logo.png',
-      location: 'Chennai, IND',
-      duration: '2020 - 2023',
-      achievements: [
-        'An undergraduate program that deals with the subjects and topics related to computer science, computer application, and its services. The main aim of this program is to create quality professionals and research fellows who can work in every sector of the world by implementing the technology of computer systems and software.',
-      ],
-    },
-    {
-      degree: 'High School',
-      institution: 'Santhome HSS, Chennai',
-      logo: '/santhome-logo.png',
-      location: 'Chennai, IND',
-      duration: '2018 - 2020',
-      achievements: [
-        'Completed my High School with Major in Computer Science , Maths , Physics and Chemistry..',
-      ],
-    },
-  ];
+type TimelineEntry = {
+  title: string;
+  company: string;
+  logo?: string;
+  logoFit?: 'contain' | 'cover';
+  logoZoom?: boolean;
+  location: string;
+  duration: string;
+  team?: string;
+  achievements: string[];
+};
 
-  const volunteering = [
-    {
-      title: 'Cybersecurity Community Member',
-      organization: 'EC-Council',
-      location: 'Remote',
-      duration: 'Nov 2025 - Present',
-      logo: '/ec-council-logo.png',
-      achievements: [
-        'Actively engaged with global cybersecurity professionals through the EC-Council Cybersecurity Community.',
-        'Responsible for contributing to discussions on ethical hacking, detection engineering, and emerging threat trends.',
-        'Collaborating in community initiatives focused on real-world attacks, cloud security, and MITRE ATT&CK-based defense techniques.',
-        'Committed to continuous skill development, knowledge sharing, and advancing cybersecurity awareness across the community.',
-      ],
-    },
-    {
-      title: 'Campus Ambassador',
-      organization: 'TechLearn.live',
-      location: 'Remote',
-      duration: 'Jul 2021 - Sep 2021',
-      logo: '/techlearn-logo.png',
-      achievements: [
-        'Contributed to Social Media Management, Communication, and Poster Design.',
-        'Crafted compelling messages, designed eye-catching posters, and engaged in meaningful volunteering experiences.',
-        'Developed skills in Social Media strategies, clear communication, effective poster design, and impactful volunteering.',
-        'Proficient in using Canva for creating visually appealing and professional designs.',
-      ],
-    },
-  ];
+const TimelineGroup = ({
+  icon: Icon,
+  label,
+  toggleLabel,
+  ribbon,
+  notch,
+  iconColor,
+  entries,
+}: {
+  icon: LucideIcon;
+  label: string;
+  toggleLabel?: string;
+  ribbon: string;
+  notch: string;
+  iconColor: string;
+  entries: TimelineEntry[];
+}) => {
+  const [expanded, setExpanded] = useState<{ [key: number]: boolean }>({});
 
-  // Provider logo mapping
-  const providerLogos: { [key: string]: string } = {
-    'GUVI': '/guvi-logo.png',
-    'Cybrary': '/cybrary-logo.png',
-    'AWS': '/aws-logo.png',
-    'GitHub': '/github-logo.png',
-    'Azure': '/azure-logo.png',
-    'Microsoft': '/microsoft-logo.png',
-    'Google': '/google-logo.png',
-    'IBM': '/ibm-logo.png',
-    'RedHat': '/redhat-logo.png',
-    'Terraform': '/terraform-logo.png',
-    'NVIDIA': '/nvidia-logo.png',
-    'Kyndryl': '/Kyndryl-Logo-Design-Concept-PNG-thumb.png',
-  };
-
-  const certifications = [
-    // 2025
-    { name: 'AWS Cloud Practitioner', issuer: 'AWS', year: '2025', status: 'verify', logo: '/aws.jpeg', link: 'https://www.credly.com/badges/7b7794ff-83be-443d-8741-e92e69170d39/public_url' },
-    { name: 'Scripting and Programming', issuer: 'Cybrary', year: '2025', status: 'verify', logo: '/Cyber.png', link: 'https://drive.google.com/file/d/1YXqmAOkHVYCJGSmsOoAZ5ZF0dMbQC2Xp/view?usp=sharing' },
-    { name: 'Computer network', issuer: 'Cybrary', year: '2025', status: 'verify', logo: '/Cyber.png', link: 'https://drive.google.com/file/d/1TH74dyjJqAhL0TePuFf9N1XzSbLMjIqQ/view' },
-    // 2024
-    { name: 'Automation - Cloud Computing', issuer: 'Kyndryl', year: '2024', status: 'verify', logo: '/kyndryl.jpeg', link: 'https://drive.google.com/file/d/1b4s59opV9J2E3u4j1q6PSXXEmldr3GJ7/view' },
-    // 2022
-    { name: 'Cyber Security & Ethical Hacking', issuer: 'GUVI', year: '2022', status: 'verify', logo: '/guvi.png', link: 'https://drive.google.com/file/d/1GIwq0obcwnJVvztgbdZnjwxCWUp1qDSV/view?usp=sharing' },
-    { name: 'Ethical Hacking Essentials (EHE)', issuer: 'Cybrary', year: '2022', status: 'verify', logo: '/download (1).png', link: 'https://drive.google.com/file/d/1INBIxs7V2Ulc1w04nEhcii5bZaBUn8CS/view?usp=sharing' },
-  ].map(cert => ({
-    ...cert,
-    logo: (cert as any).logo || providerLogos[cert.issuer] || null
-  }));
-
-  // Initialize all sections as expanded by default
-  useEffect(() => {
-    // Expand all experience sections
-    const initialExperiences: { [key: number]: boolean } = {};
-    experiences.forEach((_, index) => {
-      initialExperiences[index] = true;
-    });
-    setExpandedExperiences(initialExperiences);
-
-    // Expand all volunteering sections
-    const initialVolunteering: { [key: number]: boolean } = {};
-    volunteering.forEach((_, index) => {
-      initialVolunteering[index] = true;
-    });
-    setExpandedVolunteering(initialVolunteering);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  
-
+  const toggle = (i: number) => setExpanded((prev) => ({ ...prev, [i]: !prev[i] }));
 
   return (
-    <section id="experience" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Skills Section */}
-        <div className="mb-16 sm:mb-20 lg:mb-24">
-          <div className="text-center mb-10 sm:mb-12 lg:mb-16 px-4">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-4">
-              Technical <span className="text-gradient-cyber">Skills</span>
-            </h2>
-            <div className="w-24 h-0.5 bg-primary mx-auto"></div>
-          </div>
-          
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:flex lg:flex-wrap justify-center gap-2 sm:gap-2.5 px-4 sm:px-6 lg:px-0 max-w-6xl mx-auto">
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <Activity className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">SIEM Monitoring</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <ShieldCheck className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Incident Management</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <AlertTriangle className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Alert Triage</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <Shield className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">SOC</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <Shield className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">EDR & Defender</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <Users className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Network Security</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <AlertTriangle className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">MITRE ATT&CK</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <Award className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">OWASP Top 10</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <Shield className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Threat Analysis</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <Cloud className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">AWS Security</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <Code className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Python</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <Terminal className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Bash & PowerShell</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <Zap className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Automation</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <Search className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Vulnerability Assessment</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <AlertTriangle className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">CVE Analysis</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <Server className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">Linux & Windows</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <Boxes className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">ServiceNow & BMC</span>
-            </div>
-            <div className="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 cursor-pointer w-full justify-center sm:w-auto">
-              <Award className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium text-foreground group-hover:text-white transition-colors whitespace-nowrap truncate">NIST CSF & ISO 27001</span>
-            </div>
-          </div>
+    <div>
+      <div className="flex items-center gap-2.5 mb-6">
+        <Icon className="h-[18px] w-[18px] flex-shrink-0" style={{ color: iconColor }} strokeWidth={2.25} />
+        <h3 className="font-display font-bold text-lg text-slate-900 tracking-tight">{label}</h3>
+        <div className="flex-1 h-px bg-slate-200 ml-1" />
+      </div>
+
+      <div className="relative pl-14">
+        <div className="absolute left-5 top-5 bottom-5 w-px overflow-hidden">
+          <motion.div
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            style={{ transformOrigin: 'top' }}
+            className="w-full h-full bg-slate-300"
+          />
         </div>
 
-        <div id="professional-experience" className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            Professional <span className="text-gradient-cyber">Experience</span>
-          </h2>
-          <div className="w-24 h-0.5 bg-primary mx-auto"></div>
-        </div>
+        {entries.map((entry, i) => {
+          return (
+          <motion.div
+            key={entry.title + entry.company}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.5, delay: i * 0.08 }}
+            className="group relative mb-5 last:mb-0"
+          >
+            <span
+              className="absolute -left-14 top-0 w-10 h-10 rounded-full flex items-center justify-center overflow-hidden ring-4 ring-white bg-white shadow-sm transition-transform duration-300 group-hover:scale-110"
+              style={{ boxShadow: '0 0 0 1px rgba(15,23,42,0.06)' }}
+            >
+              {entry.logo && (
+                <img
+                  src={entry.logo}
+                  alt={`${entry.company} logo`}
+                  className={
+                    entry.logoFit === 'cover'
+                      ? 'w-full h-full object-cover'
+                      : `w-full h-full object-contain ${entry.logoZoom ? 'p-0.5' : 'p-1.5'}`
+                  }
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
+              )}
+            </span>
 
-        {/* Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Left Column - Work Experience with Timeline */}
-          <div>
-            <div className="flex items-center gap-2 mb-8">
-              <Calendar className="h-5 w-5 text-primary" strokeWidth={3} />
-              <h3 className="text-2xl font-bold text-foreground">Work Experience</h3>
-              <div className="flex-1 h-0.5 bg-primary ml-2"></div>
-            </div>
-            <div className="relative pl-10">
-              {/* Continuous Timeline Line */}
-              <div className="absolute left-[18px] top-0 bottom-0 w-0.5 bg-black" style={{ transform: 'translateX(-1px)' }}></div>
-              
-              {/* Dot at the start of the line */}
-              <div className="absolute left-[18px] top-0 z-10" style={{ transform: 'translateX(-10px)' }}>
-                <div className="relative w-5 h-5">
-                  <div className="absolute inset-0 w-5 h-5 bg-black/20 rounded-full animate-pulse"></div>
-                  <div className="absolute inset-0 w-5 h-5 bg-black rounded-full border-4 border-background shadow-lg"></div>
-                </div>
+            <div className="relative overflow-hidden rounded-xl bg-slate-50 shadow-sm transition-all duration-300 group-hover:shadow-md group-hover:-translate-y-0.5">
+              <div className="relative h-[6px] w-full overflow-hidden" style={{ background: ribbon }}>
+                <div
+                  className="absolute top-0 h-full w-2.5"
+                  style={{ right: '22%', background: notch, transform: 'skewX(-18deg)' }}
+                />
               </div>
-              
-              {experiences.map((exp, index) => (
-                <div key={index} className="relative mb-10 last:mb-0">
-                  {/* Content Card */}
-                  <div className="bg-card border border-border rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-                    {/* Kyndryl Orange Top Border */}
-                    {exp.company === 'Kyndryl India' && (
-                      <div className="absolute top-0 left-0 right-0 h-2 bg-[#FF462D] rounded-t-lg z-10 overflow-hidden">
-                        {/* White diagonal slash in the middle */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-1 bg-white transform rotate-45"></div>
-                      </div>
-                    )}
-                    <h3 className="text-lg font-semibold text-foreground mb-1">{exp.title}</h3>
-                    <div className="flex items-center gap-2.5 mb-3">
-                      {exp.logo && (
-                        <img 
-                          src={exp.logo} 
-                          alt={`${exp.company} logo`}
-                          className="w-8 h-8 object-contain flex-shrink-0"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                          }}
-                        />
-                      )}
-                      <p className="text-sm text-primary font-medium">{exp.company}</p>
-                    </div>
-                    <div className="flex items-center gap-4 text-xs text-foreground mb-4">
-                      <span className="flex items-center gap-1.5">
-                        <Calendar className="h-3.5 w-3.5 text-primary" />
-                        {exp.duration}
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <MapPin className="h-3.5 w-3.5 text-primary" />
-                        {exp.location}
-                      </span>
-                    </div>
-                    {exp.achievements && exp.achievements.length > 0 && (
-                      <div>
-                        <button
-                          onClick={() => toggleExperience(index)}
-                          className="flex items-center gap-2 w-full text-left mb-2 hover:opacity-80 transition-opacity"
-                        >
-                          <span className="text-sm font-semibold text-foreground">Responsibilities</span>
-                          <ChevronDown 
-                            className={`h-4 w-4 text-primary transition-transform duration-200 ${
-                              expandedExperiences[index] ? 'transform rotate-180' : ''
-                            }`}
-                          />
-                        </button>
-                        {expandedExperiences[index] && (
-                          <ul className="space-y-2.5">
-                            {exp.achievements.map((achievement, i) => (
-                              <li key={i} className="text-sm text-foreground flex items-start gap-2.5">
-                                <span className="text-primary mt-1.5 font-bold">•</span>
-                                <span className="leading-relaxed">{achievement}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Right Column - Education */}
-          <div className="space-y-12">
-            {/* Education */}
-            <div>
-              <div className="flex items-center gap-2 mb-8">
-                <Calendar className="h-5 w-5 text-primary" strokeWidth={3} />
-                <h3 className="text-2xl font-bold text-foreground">Education</h3>
-                <div className="flex-1 h-0.5 bg-primary ml-2"></div>
-              </div>
-              <div className="relative pl-10">
-                {/* Continuous Timeline Line */}
-                <div className="absolute left-[18px] top-0 bottom-0 w-0.5 bg-black" style={{ transform: 'translateX(-1px)' }}></div>
-                
-                {/* Dot at the start of the line */}
-                <div className="absolute left-[18px] top-0 z-10" style={{ transform: 'translateX(-11px)' }}>
-                  <div className="relative w-5 h-5">
-                    <div className="absolute inset-0 w-5 h-5 bg-black/20 rounded-full animate-pulse"></div>
-                    <div className="absolute inset-0 w-5 h-5 bg-black rounded-full border-4 border-background shadow-lg"></div>
-                  </div>
+              <div className="p-4 sm:p-5">
+                <h4 className="font-display font-semibold text-slate-900 leading-snug mb-1">{entry.title}</h4>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-sm font-medium text-[#0B60B0]">{entry.company}</span>
                 </div>
-                
-                {education.map((edu, index) => (
-                  <div key={index} className="relative mb-10 last:mb-0">
-                    {/* Content Card */}
-                    <div className="bg-card border border-border rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-                    {/* SRM Top Border - Blue with Gold Slash */}
-                    {edu.institution.includes('SRM') && (
-                      <div className="absolute top-0 left-0 right-0 h-2 bg-[#003d82] rounded-t-lg z-10 overflow-hidden" style={{ marginTop: 0 }}>
-                        {/* Gold diagonal slash in the middle */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-1 bg-[#E4B316] transform rotate-45"></div>
-                      </div>
-                    )}
-                    {/* Santhome Top Border - Blue with White Slash */}
-                    {edu.institution.includes('Santhome') && (
-                      <div className="absolute top-0 left-0 right-0 h-2 bg-[#003d82] rounded-t-lg z-10 overflow-hidden" style={{ marginTop: 0 }}>
-                        {/* White diagonal slash in the middle */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-1 bg-white transform rotate-45"></div>
-                      </div>
-                    )}
-                    <h3 className="text-lg font-semibold text-foreground mb-1">{edu.degree}</h3>
-                    <div className="flex items-center gap-2.5 mb-3">
-                      {edu.logo && (
-                        <img 
-                          src={edu.logo} 
-                          alt={`${edu.institution} logo`}
-                          className="w-8 h-8 object-contain flex-shrink-0"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                          }}
-                        />
-                      )}
-                      <p className="text-sm text-primary font-medium">{edu.institution}</p>
-                    </div>
-                    <div className="flex items-center gap-4 text-xs text-foreground">
-                      <span className="flex items-center gap-1.5">
-                        <Calendar className="h-3.5 w-3.5 text-primary" />
-                        {edu.duration}
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <MapPin className="h-3.5 w-3.5 text-primary" />
-                        {edu.location}
-                      </span>
-                    </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+                <div className="flex items-center gap-3.5 text-xs text-slate-500 mb-3 flex-wrap">
+                  <span className="flex items-center gap-1.5">
+                    <Calendar className="h-3 w-3" />
+                    {entry.duration}
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <MapPin className="h-3 w-3" />
+                    {entry.location}
+                  </span>
+                </div>
 
-            {/* Volunteering */}
-            {volunteering.length > 0 && (
-              <div>
-                <div className="flex items-center gap-2 mb-8">
-                  <Heart className="h-5 w-5 text-primary" strokeWidth={3} />
-                  <h3 className="text-2xl font-bold text-foreground">Volunteering</h3>
-                  <div className="flex-1 h-0.5 bg-primary ml-2"></div>
-                </div>
-                <div className="relative pl-10">
-                  {/* Continuous Timeline Line */}
-                  <div className="absolute left-[18px] top-0 bottom-0 w-0.5 bg-black" style={{ transform: 'translateX(-1px)' }}></div>
-                  
-                  {/* Dot at the start of the line */}
-                  <div className="absolute left-[18px] top-0 z-10" style={{ transform: 'translateX(-11px)' }}>
-                    <div className="relative w-5 h-5">
-                      <div className="absolute inset-0 w-5 h-5 bg-black/20 rounded-full animate-pulse"></div>
-                      <div className="absolute inset-0 w-5 h-5 bg-black rounded-full border-4 border-background shadow-lg"></div>
-                    </div>
-                  </div>
-                  
-                  {volunteering.map((vol, index) => (
-                    <div key={index} className="relative mb-10 last:mb-0">
-                      {/* Content Card */}
-                      <div className="bg-card border border-border rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-                      {/* EC-Council Red Top Border */}
-                      {vol.organization === 'EC-Council' && (
-                        <div className="absolute top-0 left-0 right-0 h-2 bg-[#ED1F24] rounded-t-lg z-10 overflow-hidden" style={{ marginTop: 0 }}>
-                          {/* White diagonal slash in the middle */}
-                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-1 bg-white transform rotate-45"></div>
-                        </div>
+                {entry.achievements.length > 0 && (
+                  toggleLabel ? (
+                    <div>
+                      <button
+                        onClick={() => toggle(i)}
+                        className="flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-[#0B60B0] transition-colors"
+                      >
+                        {toggleLabel}
+                        <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${expanded[i] ? 'rotate-180' : ''}`} />
+                      </button>
+                      {entry.team && (
+                        <p className="text-xs text-slate-600 mt-1.5">
+                          <span className="font-semibold text-[#0B60B0]">Team:</span> {entry.team}
+                        </p>
                       )}
-                      {/* TechLearn Blue Top Border */}
-                      {vol.organization === 'TechLearn.live' && (
-                        <div className="absolute top-0 left-0 right-0 h-2 bg-[#0066CC] rounded-t-lg z-10 overflow-hidden" style={{ marginTop: 0 }}>
-                          {/* White diagonal slash in the middle */}
-                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-1 bg-white transform rotate-45"></div>
-                        </div>
-                      )}
-                      <h3 className="text-lg font-semibold text-foreground mb-1">{vol.title}</h3>
-                      <div className="flex items-center gap-2.5 mb-3">
-                        {vol.logo && (
-                          <img 
-                            src={vol.logo} 
-                            alt={`${vol.organization} logo`}
-                            className="w-8 h-8 object-contain flex-shrink-0"
-                            onError={(e) => {
-                              e.currentTarget.style.display = 'none';
-                            }}
-                          />
-                        )}
-                        <p className="text-sm text-primary font-medium">{vol.organization}</p>
-                      </div>
-                      <div className="flex items-center gap-4 text-xs text-foreground mb-4">
-                        <span className="flex items-center gap-1.5">
-                          <Calendar className="h-3.5 w-3.5 text-primary" />
-                          {vol.duration}
-                        </span>
-                        {vol.location && (
-                          <span className="flex items-center gap-1.5">
-                            <MapPin className="h-3.5 w-3.5 text-primary" />
-                            {vol.location}
-                          </span>
-                        )}
-                      </div>
-                      {vol.achievements && vol.achievements.length > 0 && (
-                        <div>
-                          <button
-                            onClick={() => toggleVolunteering(index)}
-                            className="flex items-center gap-2 w-full text-left mb-2 hover:opacity-80 transition-opacity"
+                      <AnimatePresence initial={false}>
+                        {expanded[i] && (
+                          <motion.ul
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                            className="overflow-hidden space-y-2 mt-3"
                           >
-                            <span className="text-sm font-semibold text-foreground">Contributions</span>
-                            <ChevronDown 
-                              className={`h-4 w-4 text-primary transition-transform duration-200 ${
-                                expandedVolunteering[index] ? 'transform rotate-180' : ''
-                              }`}
-                            />
-                          </button>
-                          {expandedVolunteering[index] && (
-                            <ul className="space-y-2.5">
-                              {vol.achievements.map((achievement, i) => (
-                                <li key={i} className="text-sm text-foreground flex items-start gap-2.5">
-                                  <span className="text-primary mt-1.5 font-bold">•</span>
-                                  <span className="leading-relaxed">{achievement}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </div>
-                      )}
-                      </div>
+                            {entry.achievements.map((line, j) => (
+                              <motion.li
+                                key={j}
+                                initial={{ opacity: 0, x: -8 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.3, delay: j * 0.05 }}
+                                className="text-sm text-slate-600 leading-relaxed flex items-start gap-2"
+                              >
+                                <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-[6px] flex-shrink-0" />
+                                <span>{line}</span>
+                              </motion.li>
+                            ))}
+                          </motion.ul>
+                        )}
+                      </AnimatePresence>
                     </div>
-                  ))}
-                </div>
+                  ) : (
+                    <p className="text-sm text-slate-600 leading-relaxed">{entry.achievements[0]}</p>
+                  )
+                )}
               </div>
-            )}
-          </div>
-        </div>
-
-        {/* Certifications - Separate Section */}
-        <div className="mt-24">
-          <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <Calendar className="h-5 w-5 text-primary" strokeWidth={3} />
-              <h3 className="text-2xl font-bold text-foreground">Certifications</h3>
             </div>
-            <div className="w-24 h-0.5 bg-primary mx-auto"></div>
-          </div>
-          <div className="grid grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {certifications.map((cert, index) => (
-              <a
-                key={index}
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-all"
-              >
-                <div className="flex flex-col h-full">
-                  {/* Logo and Certification Name */}
-                  <div className="mb-3 flex items-center gap-3">
-                    {cert.logo && !failedLogos[index] && (
-                      <img 
-                        src={cert.logo} 
-                        alt={`${cert.issuer} logo`}
-                        className="h-10 w-10 object-contain flex-shrink-0"
-                        loading="lazy"
-                        onError={() => {
-                          setFailedLogos(prev => ({ ...prev, [index]: true }));
-                        }}
-                      />
-                    )}
-                    <h4 className="text-sm font-black text-black line-clamp-2 flex-1">{cert.name}</h4>
-                  </div>
-                  
-                  {/* Date and Status */}
-                  <div className="flex items-center justify-between mt-auto">
-                    <div className="flex items-center gap-1.5 text-xs text-foreground">
-                      <Calendar className="h-3.5 w-3.5" strokeWidth={2.5} />
-                      <span className="font-bold">{cert.year}</span>
-                    </div>
-                    {cert.status === 'ongoing' ? (
-                      <span className="text-xs font-medium text-primary">Ongoing</span>
-                    ) : (
-                      <span className="text-xs font-medium text-primary flex items-center gap-1">
-                        Verify <ExternalLink className="h-3 w-3" />
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </a>
-            ))}
+          </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+const Experience = () => {
+  return (
+    <section id="experience" className="relative py-28 sm:py-32 bg-white overflow-hidden">
+      <div className="absolute top-0 right-0 w-[420px] h-[420px] bg-[#0B60B0]/[0.05] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[320px] h-[320px] bg-[#0B60B0]/[0.04] rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <h2 className="font-display font-bold tracking-tighter text-4xl sm:text-5xl text-slate-900">
+            WORK{' '}
+            <span className="text-transparent" style={{ WebkitTextStroke: '2px #0B60B0' }}>
+              EXPERIENCE
+            </span>
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
+          <TimelineGroup
+            icon={Briefcase}
+            label="Work Experience"
+            toggleLabel="Responsibilities"
+            ribbon="linear-gradient(90deg, #1e293b, #000000)"
+            notch="rgba(255,255,255,0.85)"
+            iconColor="#0B60B0"
+            entries={workExperience}
+          />
+          <div className="space-y-10">
+            <TimelineGroup
+              icon={GraduationCap}
+              label="Education"
+              toggleLabel="Highlights"
+              ribbon="linear-gradient(90deg, #1e293b, #000000)"
+              notch="rgba(255,255,255,0.85)"
+              iconColor="#0B60B0"
+              entries={education}
+            />
+            <TimelineGroup
+              icon={Heart}
+              label="Volunteering"
+              toggleLabel="Contributions"
+              ribbon="linear-gradient(90deg, #1e293b, #000000)"
+              notch="rgba(255,255,255,0.85)"
+              iconColor="#0B60B0"
+              entries={volunteering}
+            />
           </div>
         </div>
-
       </div>
     </section>
   );
