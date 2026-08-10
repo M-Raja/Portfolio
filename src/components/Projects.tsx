@@ -23,7 +23,7 @@ const projects: {
     tags: ['SIEM', 'Windows Logs', 'Incident Response'],
     image: project1,
     link: 'https://github.com/M-Raja?tab=repositories',
-    status: 'completed',
+    status: 'development',
   },
   {
     category: 'Cloud Security',
@@ -33,7 +33,7 @@ const projects: {
     tags: ['AWS', 'CloudTrail', 'IAM'],
     image: project2,
     link: 'https://github.com/M-Raja?tab=repositories',
-    status: 'completed',
+    status: 'development',
   },
 ];
 

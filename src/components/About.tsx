@@ -148,11 +148,12 @@ const About = () => {
                 posture across enterprise environments.
               </p>
               <p>
-                Currently working as an Associate Technical Engineer at{' '}
-                <span className="text-slate-900 font-semibold">Kyndryl</span>, I support production
-                systems through automation, system reliability, and incident management,
-                sharpening my expertise in alert triage, root cause analysis, and responding
-                effectively to security events across infrastructure and cloud environments.
+                Currently working as a Technical Engineer at{' '}
+                <span className="text-slate-900 font-semibold">TCS</span>, I provide enterprise IT
+                engineering support across identity management, endpoint security, and access
+                control, sharpening my expertise in incident response, root cause analysis, and
+                responding effectively to security events across infrastructure and cloud
+                environments.
               </p>
             </div>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
-import { CONTACT_EMAIL, MAILTO_HREF } from '@/lib/contact';
+import { CONTACT_EMAIL, GMAIL_COMPOSE_HREF } from '@/lib/contact';
 
 const menuLinks = [
   { label: 'Home', id: 'home' },
@@ -58,7 +58,9 @@ const Footer = () => {
               Let's build something secure together.
             </p>
             <a
-              href={MAILTO_HREF}
+              href={GMAIL_COMPOSE_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1878D6] to-[#0B60B0] text-white font-semibold text-sm px-7 py-4 shadow-[0_10px_30px_-8px_rgba(11,96,176,0.5)] hover:scale-105 transition-transform duration-300"
             >
               <Mail className="h-4 w-4" />

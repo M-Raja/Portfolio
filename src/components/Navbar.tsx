@@ -16,7 +16,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MAILTO_HREF } from '@/lib/contact';
+import { GMAIL_COMPOSE_HREF } from '@/lib/contact';
 
 type NavItem = { id: string; label: string; desc: string; icon: LucideIcon };
 type NavGroup = { label: string; items: NavItem[] };
@@ -43,7 +43,7 @@ const navGroups: NavGroup[] = [
 const navSocials = [
   { label: 'GitHub', href: 'https://github.com/M-Raja', icon: Github },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/m-raja-/', icon: Linkedin },
-  { label: 'Email', href: MAILTO_HREF, icon: Mail },
+  { label: 'Email', href: GMAIL_COMPOSE_HREF, icon: Mail },
 ];
 
 // Everything reachable from the "More" popover on mobile/tablet
@@ -238,40 +238,36 @@ const Navbar = () => {
 
           {/* Social icons — desktop */}
           <div className="hidden lg:flex items-center gap-2">
-            {navSocials.map((social) => {
-              const isMail = social.href.startsWith('mailto:');
-              return (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  {...(!isMail && { target: '_blank', rel: 'noopener noreferrer' })}
-                  aria-label={social.label}
-                  className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 transition-all duration-300 hover:border-[#0B60B0]/50 hover:text-[#0B60B0] hover:-translate-y-0.5"
-                >
-                  <social.icon className="h-3.5 w-3.5" strokeWidth={2} />
-                </a>
-              );
-            })}
+            {navSocials.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 transition-all duration-300 hover:border-[#0B60B0]/50 hover:text-[#0B60B0] hover:-translate-y-0.5"
+              >
+                <social.icon className="h-3.5 w-3.5" strokeWidth={2} />
+              </a>
+            ))}
           </div>
 
           {/* Social icons — mobile/tablet: always one tap away, no need to scroll to the footer */}
           <div className="flex lg:hidden items-center gap-1.5">
             {navSocials
               .filter((social) => social.label !== 'GitHub')
-              .map((social) => {
-                const isMail = social.href.startsWith('mailto:');
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    {...(!isMail && { target: '_blank', rel: 'noopener noreferrer' })}
-                    aria-label={social.label}
-                    className="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 active:scale-95 active:bg-[#EAF2FB] active:text-[#0B60B0] active:border-[#0B60B0]/40 transition-all duration-150"
-                  >
-                    <social.icon className="h-4 w-4" strokeWidth={2} />
-                  </a>
-                );
-              })}
+              .map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 active:scale-95 active:bg-[#EAF2FB] active:text-[#0B60B0] active:border-[#0B60B0]/40 transition-all duration-150"
+                >
+                  <social.icon className="h-4 w-4" strokeWidth={2} />
+                </a>
+              ))}
           </div>
         </div>
       </header>

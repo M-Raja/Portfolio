@@ -4,6 +4,25 @@ import { Calendar, MapPin, ChevronDown, Briefcase, GraduationCap, Heart, type Lu
 
 const workExperience = [
   {
+    title: 'Technical Engineer',
+    company: 'Tata Consultancy Services · Full-time',
+    logo: '/tcs-badge.png',
+    logoFit: 'cover' as const,
+    location: 'Chennai, Tamil Nadu, IND · On-site',
+    duration: 'Jul 2026 – Present',
+    team: 'Information Systems Management (ISM)',
+    achievements: [
+      'Provide enterprise IT engineering support by managing incidents, service requests, and operational requests while maintaining SLA compliance through ITIL best practices.',
+      'Administer Microsoft 365, Microsoft Intune, Active Directory, and Microsoft Entra ID (Azure AD), including user provisioning, identity lifecycle management, mailbox administration, access management, and password resets.',
+      'Manage enterprise endpoints using Microsoft Intune, including device enrollment, compliance policies, application deployment, endpoint administration, and BitLocker recovery.',
+      'Support secure enterprise access using BitLocker, Zscaler, and Forcepoint, resolving authentication, encryption, connectivity, and policy-related issues.',
+      'Troubleshoot Windows operating systems, Microsoft Office, VPN, networking, hardware, software, and authentication issues to ensure business continuity.',
+      'Create and maintain Knowledge Base Articles (KBAs), Standard Operating Procedures (SOPs), and technical documentation to improve operational efficiency.',
+      'Collaborate with infrastructure, application, networking, and security teams to investigate, escalate, and resolve complex enterprise issues.',
+      'Monitor operational queues, prioritize critical requests, coordinate with resolver groups, and contribute to continuous service improvement.',
+    ],
+  },
+  {
     title: 'Associate Technical Engineer',
     company: 'Kyndryl India · Full-time',
     logo: '/kyndryl-badge.png',
@@ -12,11 +31,13 @@ const workExperience = [
     duration: 'Aug 2023 – Jun 2025',
     team: 'Infrastructure Operations (Mainframe & Cloud Services)',
     achievements: [
-      'Monitored and triaged alerts in a 24×7 NOC/SOC environment, managing 100+ monthly incidents via ServiceNow & BMC Remedy with 100% SLA compliance (ITIL).',
-      'Performed Root Cause Analysis (RCA) on operational and security alerts, cutting recurring incidents by 20% through preventive fixes.',
-      'Automated monitoring and batch workflows using Bash, Control-M, and IBM Tivoli OPC, reducing manual effort by 30%.',
-      'Supported IBM Mainframe and cloud production systems, including DR and failover testing, to ensure uptime, compliance, and audit readiness.',
-      'Collaborated cross-functionally on enterprise projects for APMM and Naturgy, covering data center migrations and service reliability.',
+      'Worked in a 24×7 NOC/SOC-style environment, performing real-time alert monitoring, incident triage, log analysis, alert validation, false positive filtering, escalation, and production support for critical enterprise systems.',
+      'Managed 100+ monthly incidents using ServiceNow and BMC Remedy, maintaining 100% SLA compliance while following ITIL best practices.',
+      'Investigated operational and security alerts, performed Root Cause Analysis (RCA), identified recurring trends, and reduced recurring incidents by 20% through preventive improvements.',
+      'Automated monitoring, alerting, and batch workflows using Bash, Control-M, and IBM Tivoli OPC, reducing manual effort by 30% and improving operational efficiency.',
+      'Supported IBM Mainframe and cloud-based production environments, ensuring system availability, data integrity, compliance, operational stability, and audit readiness.',
+      'Participated in Disaster Recovery (DR) activities, validating backup recovery, failover, business continuity, and system resilience.',
+      'Collaborated with cross-functional infrastructure, application, cloud, and operations teams on enterprise projects for APMM and Naturgy, supporting data center migrations, incident management, service reliability, and operational continuity.',
     ],
   },
 ];
